@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "123",
+    "database": "exchange_db_development",
+    "host": "localhost",
+    "dialect": "postgres",
+    "operatorsAliases": true
+  },
+  "test": {
+    "username": "postgres",
+    "password": "example",
+    "database": "exchange_db_test",
+    "host": "db",
+    "dialect": "postgres",
+    "operatorsAliases": true
+  },
+  "production": {
+    "username": "postgres",
+    "password": "example",
+    "database": "exchange_db_production",
+    "host": "db",
+    "dialect": "postgres",
+    "operatorsAliases": true
+  }
+}
