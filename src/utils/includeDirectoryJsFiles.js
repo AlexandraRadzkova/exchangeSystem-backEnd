@@ -1,14 +1,16 @@
 const fs = require('fs')
 const path = require('path')
 
-module.exports = function includeDirectoryJsFiles(dirname, filename) {
-  const basename = path.basename(filename)
+const isJsFile = (file) => path.extname(file) === '.js'
+
+module.exports = function includeDirectoryJsFiles(
+  dirname,
+  filename = null,
+  requireFunc = require,
+) {
+  const basename = filename && path.basename(filename)
   return fs
     .readdirSync(dirname)
-    .filter((file) => {
-      return (
-        file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
-      )
-    })
-    .map((file) => require(path.join(dirname, file)))
+    .filter((file) => file !== basename && isJsFile(file))
+    .map((file) => requireFunc(path.join(dirname, file)))
 }
